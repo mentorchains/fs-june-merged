@@ -1,4 +1,4 @@
-# FS Team 2 (June)
+# FS Team 1+2 (June)
 
-Welcome to the GitHub Repository for our full stack team 2.  
+Welcome to the GitHub Repository for our team's Discourse voting plugin.  
 

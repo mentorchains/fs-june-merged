@@ -8,7 +8,7 @@ after_initialize do
     load File.expand_path('../app/controllers/reply_voting_controller.rb', __FILE__)
   
     Discourse::Application.routes.append do
-      # Map the path `/notebook` to `NotebookController`’s `index` method
-      get '/reply_votingr' => 'reply_votingr#index'
+      # Map the path `/reply_voting` to `ReplyVotingController`’s `index` method
+      get '/reply_voting' => 'reply_voting#index'
     end
   end

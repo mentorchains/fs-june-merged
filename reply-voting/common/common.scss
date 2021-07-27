@@ -1,0 +1,13 @@
+a {
+    color: var(--primary-low-mid);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+nav.post-controls {
+    padding: 0;
+    display: flex;
+    float: right;
+    align-items: center;
+    justify-content: space-between;
+}

@@ -1,0 +1,4 @@
+en:
+  js:
+    reply_voting:
+      reply_voting_enabled: "Allow users to vote on replies?"

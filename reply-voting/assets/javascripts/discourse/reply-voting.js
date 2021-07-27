@@ -13,7 +13,7 @@ export default apiInitializer("0.11.1", api => {
   api.decorateWidget('post-menu:extra-post-controls', helper => {
     return helper.h('', [
         helper.h('a.icon', {
-            title: 'Up_Arrow'
+            title: 'Upvote'
         }, iconNode('long-arrow-alt-up')), 
     ]);
 });
@@ -21,7 +21,7 @@ export default apiInitializer("0.11.1", api => {
 api.decorateWidget('post-menu:extra-post-controls', helper => {
   return helper.h('', [
       helper.h('a.icon', {
-          title: 'Down_Arrow'
+          title: 'Downvote'
       }, iconNode('long-arrow-alt-down')), 
   ]);
 });

@@ -8,6 +8,8 @@
 
 Rails.application.routes.draw do
 	
+	#WARNING: EVERY vote_id passed in through the url will need to be UNIQUE
+
 	#this route, with /true, represents an upvote, adding a vote to the database
 	post '/reply/:replyid/:userid/:voteid/true' => 'replyvoting#addCount'
 

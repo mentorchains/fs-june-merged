@@ -1,0 +1,26 @@
+<h1>Reply Voting</h1>
+
+{{!-- <h2>Votes: {{ count }}</h2> --}}
+
+<button type='button' class='btn btn-primary' {{ action 'upVote' 123456}}>
+{{ i18n 'replyvoting.upvote_label' }}
+</button>
+
+<button type="button" class="btn btn-danger" {{ action 'downVote' 123456}}>
+{{ i18n 'replyvoting.downvote_label' }}
+</button>
+
+<table>
+  <tr>
+    <th>Reply id:</th>
+    <th>User id: </th>
+  </tr>
+  {{#if votes}}
+    {{#each votes as |vote|}}
+      <tr>
+        <td>{{ vote.id }}</td>
+        <td>{{ vote.content }}</td>
+      </tr>
+    {{/each}}
+  {{/if}}
+</table>

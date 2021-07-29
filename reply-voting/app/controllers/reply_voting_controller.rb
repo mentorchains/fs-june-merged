@@ -17,7 +17,7 @@ class ReplyVotingController < ::ApplicationController
 	#
 	# @return --> vote count
 	def getVoteCount
-		VoteStore.get_vote(params[:replyid])
+		VoteStore.get_count(params[:replyid])
 	end
 
 	# precondition: both incoming reply and user ids are valid
@@ -25,8 +25,8 @@ class ReplyVotingController < ::ApplicationController
 	#				 returns nothing
 	def addCount
 		vote = {
-			"replyId" -> params[:replyid],
-			"userId" -> params[:userid],
+			"reply_id" -> params[:replyid],
+			"user_id" -> params[:userid],
 			"upvote" -> true
 		}
 		VoteStore.vote(params[:voteid], vote)

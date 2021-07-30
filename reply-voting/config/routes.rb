@@ -16,7 +16,6 @@ Rails.application.routes.draw do
 	#this route, with /false, represents a downvote, removing a vote from the database
 	post '/reply/:relpyid/:userid/:voteid/false' => 'replyvoting#deleteCount'
 
-	#used when the total vote count is required on a specific reply
-	get '/reply/:replyid/vote-count' => 'replyvoting#getVoteCount'
-
+	#used when the total upvote count is required on a specific reply
+	get '/reply/:replyid/total-vote-count' => 'replyvoting#getVoteCounts'
 end

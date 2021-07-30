@@ -14,7 +14,7 @@ class ReplyVotingController < ::ApplicationController
 	
 	# precondition: both incoming reply and user ids are valid
 	# postcondition: updates the database, adds a vote to the reply,
-	#				 returns nothing
+	#		 returns nothing
 	def addCount
 		vote = {
 			"reply_id" -> params[:replyid],
@@ -26,7 +26,7 @@ class ReplyVotingController < ::ApplicationController
 
 	# @precondition: incoming reply id is valid
 	# @postcondition: updates the database, removing a vote from the reply,
-	#				  returns nothing
+	#		  returns nothing
 	def deleteCount
 		return VoteStore.remove_vote(params[:replyid])
 	end

@@ -12,14 +12,6 @@ require VoteStore
 
 class ReplyVotingController < ::ApplicationController
 	
-	# precondition: coming reply id is valid
-	# postcondition: obtain a single integer representing the vote count on a specific reply
-	#
-	# @return --> vote count
-	def getVoteCount
-		VoteStore.get_count(params[:replyid])
-	end
-
 	# precondition: both incoming reply and user ids are valid
 	# postcondition: updates the database, adds a vote to the reply,
 	#				 returns nothing
@@ -29,13 +21,25 @@ class ReplyVotingController < ::ApplicationController
 			"user_id" -> params[:userid],
 			"upvote" -> true
 		}
-		VoteStore.vote(params[:voteid], vote)
+		return VoteStore.vote(params[:voteid], vote)
 	end
 
 	# @precondition: incoming reply id is valid
 	# @postcondition: updates the database, removing a vote from the reply,
 	#				  returns nothing
 	def deleteCount
-		VoteStore.remove_vote(params[:replyid])
+		return VoteStore.remove_vote(params[:replyid])
+	end
+
+	# precondition: coming reply id is valid
+	# postcondition: obtain a hash containing the upvotes and downvotes of a specific reply id
+	#
+	# @return --> a hash with counts for both upvotes and downvotes
+	def getVoteCounts
+		totalCounts = {
+			"upvotes" -> VoteStore.get_up_count(params[:replyid]).to_i,
+			"downvotes" -> VoteStore.get_down_count(params[:replyid]).to_i
+		}
+		return totalCounts
 	end
 end

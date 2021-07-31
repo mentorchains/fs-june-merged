@@ -1,7 +1,17 @@
-vote-icon {
+vote-button {
     color: var(--primary-low-mid);
     text-decoration: none;
     cursor: pointer;
+    padding: 10px 10px 10px 10px;
+    border: 1px solid var(--secondary);
+    transition: .5s;
+    padding: 10px 10px 10px 10px;
+
+}
+
+vote-button:hover {
+    border: 1px solid var(--quaternary);
+    transition: .5s;
 }
 
 nav.post-controls {
@@ -11,3 +21,13 @@ nav.post-controls {
     align-items: center;
     justify-content: space-between;
 }
+
+vote-count {
+    color: var(--quaternary);
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 10px 10px 10px;
+}
+

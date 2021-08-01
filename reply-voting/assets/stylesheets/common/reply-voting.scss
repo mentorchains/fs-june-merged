@@ -1,15 +1,14 @@
-vote-button {
-    color: var(--primary-low-mid);
+.vote-button {
+    color: var(--quaternary);
     text-decoration: none;
     cursor: pointer;
     padding: 10px 10px 10px 10px;
     border: 1px solid var(--secondary);
     transition: .5s;
     padding: 10px 10px 10px 10px;
-
 }
 
-vote-button:hover {
+.vote-button:hover {
     border: 1px solid var(--quaternary);
     transition: .5s;
 }
@@ -28,6 +27,6 @@ vote-count {
     cursor: pointer;
     font-weight: bold;
     font-size: 20px;
-    padding: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;  
+    border: 1px solid var(--quaternary);
 }
-

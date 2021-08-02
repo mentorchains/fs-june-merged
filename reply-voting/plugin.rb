@@ -2,7 +2,7 @@
 # version: 0.1
 # authors: fs-june-merged (team 1 + 2)
 
-enabled_site_setting :replyvoting_enabled
+enabled_site_setting :reply_voting_enabled
 
 register_asset 'stylesheets/notebook.css'
 

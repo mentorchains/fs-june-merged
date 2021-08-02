@@ -1,3 +1,7 @@
 en:
   site_settings:
+<<<<<<< HEAD
     replyvoting_enabled: 'Enable reply voting'
+=======
+    reply_voting_enabled: "Allow users to vote on replies?"
+>>>>>>> 9490a1af710c2353d334d21291daccc623d75f74

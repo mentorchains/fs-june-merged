@@ -20,23 +20,18 @@ class VoteStore
             PluginStore.set('reply_voting', 'votes', votes)
         end
 
-        # @param reply_id: Integer  Indicates which reply to get count for 
+        # @param reply_id: Integer  Indicates which reply to get upvote count for 
         # @return count: Integer    Count of specified reply_id
-        def get_count(reply_id)
+        def get_up_count(reply_id)
             votes = get_votes().values
-            count = 0
-            votes.each do |vote|
-                if vote[:reply_id] == reply_id
-                    count += vote[:upvote] ? 1 : -1
-                end
-            end
-            count
+            votes.count{|h| h[:reply_id] == reply_id && h[:upvote]}
         end
 
-        # @return count: Hash    Counts of all reply_id
-        def get_all_count()
+        # @param reply_id: Integer  Indicates which reply to get downvote count for 
+        # @return count: Integer    Count of specified reply_id
+        def get_down_count(reply_id)
             votes = get_votes().values
-            votes.each_with_object(Hash.new(0)) { |h1, h2| h2[h1[:reply_id]] += h1[:upvote] ? 1 : -1}
+            votes.count{|h| h[:reply_id] == reply_id && !h[:upvote]}
         end
     end
 end

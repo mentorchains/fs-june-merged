@@ -15,24 +15,6 @@ export default apiInitializer("0.11.1", api => {
         }
     });
 
-    api.addPostMenuButton('up-vote', (attrs) => {
-        return {
-          action: 'upVote',
-          icon: 'long-arrow-alt-up',
-          className: 'upVote',
-          title: 'Upvote',
-        };
-      });
-    
-      api.addPostMenuButton('down-vote', (attrs) => {
-        return {
-          action: 'downVote',
-          icon: 'long-arrow-alt-down',
-          className: 'downVote',
-          title: 'Downvote',
-        };
-      });
-
     api.decorateWidget('post-menu:extra-post-controls', helper => {
         const model = helper.getModel();
 

@@ -1,4 +1,4 @@
-# @author: Aryan Ahuja
+# @author: Aryan Ahuja and Ryan Kwong
 # @created: 7/26/2021
 #
 # @project: Reply Voting

@@ -1,6 +1,5 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
 import { apiInitializer } from "discourse/lib/api";
-import { iconNode } from "discourse-common/lib/icon-library";
 import { h } from 'virtual-dom';
 import { ajax } from "discourse/lib/ajax";
 
@@ -43,8 +42,7 @@ function getCount(reply_id){
 }
 
 export default apiInitializer("0.11.1", api => {      
-    const { iconNode } = require("discourse-common/lib/icon-library");
-    
+
     api.addPostMenuButton('up-vote', (attrs) => {
       if(!attrs.firstPost){
         return {
@@ -52,6 +50,7 @@ export default apiInitializer("0.11.1", api => {
           icon: 'long-arrow-alt-up',
           className: 'upVote',
           title: 'Upvote',
+          position: 'first'
         };
       }  
     });
@@ -63,10 +62,22 @@ export default apiInitializer("0.11.1", api => {
           icon: 'long-arrow-alt-down',
           className: 'downVote',
           title: 'Downvote',
+          position: 'second'
         };
       }
     });
-    
+
+    api.addPostMenuButton('vote-count', (attrs) => {
+      if(!attrs.firstPost){
+        return {
+          label: "5", // dummy for test only
+          className: 'voteCount',
+          title: 'VoteCount',
+          position: 'first'
+        };
+      }  
+    });
+
     api.attachWidgetAction("post", "upVote", function () {
         alert("upvote is clicked");
         const post = this.model;

@@ -27,9 +27,9 @@ class ReplyVotingController < ::ApplicationController
 	#		 returns nothing
 	def addCount
 		vote = {
-			"reply_id" -> params[:replyid],
-			"user_id" -> params[:userid],
-			"upvote" -> true
+			"reply_id" => params[:replyid],
+			"user_id" => params[:userid],
+			"upvote" => true
 		}
 		return VoteStore.vote(params[:voteid], vote)
 	end
@@ -38,8 +38,8 @@ class ReplyVotingController < ::ApplicationController
 	# @postcondition: updates the database, removing a vote from the reply,
 	#		  returns nothing
 	def deleteCount
-		@vote = VoteStore.find(params[:replyid])
-		@vote.destroy		
+		# @vote = VoteStore.find(params[:replyid])
+		# @vote.destroy		
 
 		return VoteStore.remove_vote(params[:replyid])
 	end
@@ -49,17 +49,17 @@ class ReplyVotingController < ::ApplicationController
 	#
 	# @return --> a hash with counts for both upvotes and downvotes
 	def getVoteCounts
-		# totalCounts = {
-		# 	"upvotes" -> VoteStore.get_up_count(params[:replyid]).to_i,
-		# 	"downvotes" -> VoteStore.get_down_count(params[:replyid]).to_i
-		# }
+		totalCounts = {
+			"upvotes" => VoteStore.get_up_count(params[:replyid]).to_i,
+			"downvotes" => VoteStore.get_down_count(params[:replyid]).to_i
+		}
 		
-		# return totalCounts
+		return totalCounts
 		
-		totalCounts = Counts.new
-		totalCounts.upvotes = VoteStore.get_up_count(params[:replyid]).to_i
-		totalCounts.downvotes = VoteStore.get_down_count(params[:replyid]).to_i
+		# totalCounts = Counts.new
+		# totalCounts.upvotes = VoteStore.get_up_count(params[:replyid]).to_i
+		# totalCounts.downvotes = VoteStore.get_down_count(params[:replyid]).to_i
 
-		return totalCounts.to_json
+		# return totalCounts.to_json
 	end
 end

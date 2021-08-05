@@ -1,9 +1,4 @@
 plugins:
-<<<<<<< HEAD
-  replyvoting_enabled:
-    default: true
-=======
   reply_voting_enabled:
     default: true
     client: true
->>>>>>> 9490a1af710c2353d334d21291daccc623d75f74

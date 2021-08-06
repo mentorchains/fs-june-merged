@@ -36,8 +36,7 @@ function downVote(post,user){
 function getCount(reply_id){
   ajax("/votes/count",{type:"GET",data:{id:reply_id}})
   .then(result => {
-    console.log("upcount " + result.upcount);
-    console.log("downcount " + result.downcount);
+    console.log("count " + result.count);
   }).catch(console.error);
 }
 

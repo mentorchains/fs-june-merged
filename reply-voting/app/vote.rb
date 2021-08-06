@@ -24,14 +24,14 @@ class VoteStore
         # @return count: Integer    Count of specified reply_id
         def get_up_count(reply_id)
             votes = get_votes().values
-            votes.count{|h| h[:reply_id] == reply_id && h[:upvote]}
+            votes.count{|h| h[:reply_id] == reply_id && h[:upvote] == "true"}
         end
 
         # @param reply_id: Integer  Indicates which reply to get downvote count for 
         # @return count: Integer    Count of specified reply_id
         def get_down_count(reply_id)
             votes = get_votes().values
-            votes.count{|h| h[:reply_id] == reply_id && !h[:upvote]}
+            votes.count{|h| h[:reply_id] == reply_id && h[:upvote] == "false"}
         end
     end
 end

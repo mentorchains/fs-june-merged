@@ -2,9 +2,10 @@ import { withPluginApi } from "discourse/lib/plugin-api";
 import { apiInitializer } from "discourse/lib/api";
 import { h } from 'virtual-dom';
 
-export default apiInitializer("0.11.1", api => {      
+export default apiInitializer("0.11.1", api => {      //callback
 
-    api.addPostMenuButton('up-vote', (attrs) => {
+    api.addPostMenuButton('up-vote', (attrs) => { //method (belongs to obj) that creates a widget at the post menu btn; 
+      //find some sort of button below avatar on apiInitializer
       if(!attrs.firstPost){
         return {
           action: 'upVote',
@@ -44,16 +45,15 @@ export default apiInitializer("0.11.1", api => {
     api.attachWidgetAction("post", "upVote", function () {
       //const upvote = document.querySelector(".widget-button.btn-flat.upVote.no-text.btn-icon"); 
       const upvote = document.querySelector(".d-icon-arrow-up"); 
+      const downvote = document.querySelector(".d-icon-arrow-down");
       upvote.classList.toggle("voted");
-
-      /*let div = document.querySelector("up-vote");
-      div.classList.toggle("voted");
-
-      alert("upvote is clicked");*/
+      downvote.classList.remove("voted");
     });
     
     api.attachWidgetAction("post", "downVote", function () {
+      const upvote = document.querySelector(".d-icon-arrow-up"); 
       const downvote = document.querySelector(".d-icon-arrow-down"); 
+      upvote.classList.remove("voted");
       downvote.classList.toggle("voted");
     });
 });

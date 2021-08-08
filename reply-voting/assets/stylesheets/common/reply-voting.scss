@@ -5,7 +5,6 @@
     padding: 10px 10px 10px 10px;
     border: 1px solid var(--secondary);
     transition: .5s;
-    padding: 10px 10px 10px 10px;
 }
 
 .vote-button:hover {
@@ -22,11 +21,11 @@ nav.post-controls {
 }
 
 vote-count {
-    color: var(--quaternary);
+    color: var(--tertiary);
     text-decoration: none;
     cursor: pointer;
     font-weight: bold;
     font-size: 20px;
-    padding: 10px 10px 10px 10px;  
-    border: 1px solid var(--quaternary);
+    padding: 4px 10px 4px 10px;  
+    border: 1px solid var(--tertiary);
 }

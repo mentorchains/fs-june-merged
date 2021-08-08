@@ -13,6 +13,20 @@
     transition: .5s;
 }
 
+/*#long-arrow-alt-up:hover{
+    color: red !important;
+}*/
+
+.widget-button.btn-flat.upVote.no-text.btn-icon.d-hover, .widget-button.btn-flat.downVote.no-text.btn-icon.d-hover{
+    svg{
+        color: var(--primary);
+    }
+}
+
+.voted{
+    color: var(--primary) !important;
+}
+
 nav.post-controls {
     padding: 0;
     display: flex;

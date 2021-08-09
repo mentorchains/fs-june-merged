@@ -101,5 +101,24 @@ class ReplyVotingController < ::ApplicationController
 		render json: {count: (upcount-downcount)}
 	end
 
-	
+	# # precondition: both incoming reply, isupvote and user ids are valid
+	# # postcondition: get whether the user has upvote
+	# #		 returns true if user has upvote, false otherwise
+    def checkuserupvote
+		Rails.logger.info 'Called VotesController#checkUserVote'
+		vote_id = params[:vote_id]
+		votes = VoteStore.get_votes();
+		found = votes.find{|key,values| values[:reply_id] == params[:reply_id] \
+						&& values[:user_id] == params[:user_id] \
+						&& values[:upvote] == "true"}
+		isupvote = false
+		
+		if(found)
+			# Rails.logger.info "Found: #{found}"
+			isupvote = true
+		end
+
+		Rails.logger.info "isupvote: #{isupvote}"
+		render json: { upvote: isupvote }
+	end
 end

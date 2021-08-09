@@ -9,6 +9,8 @@ register_asset 'stylesheets/common/reply-voting.scss'
 
 register_svg_icon "long-arrow-alt-up"
 register_svg_icon "long-arrow-alt-down"
+register_svg_icon "arrow-up"
+register_svg_icon "arrow-down"
 
 load File.expand_path('../app/vote.rb', __FILE__)
 
@@ -18,6 +20,8 @@ after_initialize do
     Discourse::Application.routes.append do
       put '/votes/update' => 'reply_voting#update'
       get '/votes/count' => 'reply_voting#getcount'
+      get '/votes/checkuserupvote' => 'reply_voting#checkuserupvote'
       delete '/votes/destroy' => 'reply_voting#destroy'
     end
 end
+

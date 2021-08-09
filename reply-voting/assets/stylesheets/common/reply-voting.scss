@@ -5,12 +5,25 @@
     padding: 10px 10px 10px 10px;
     border: 1px solid var(--secondary);
     transition: .5s;
-    padding: 10px 10px 10px 10px;
 }
 
 .vote-button:hover {
     border: 1px solid var(--quaternary);
     transition: .5s;
+}
+
+/*#long-arrow-alt-up:hover{
+    color: red !important;
+}*/
+
+.widget-button.btn-flat.upVote.no-text.btn-icon.d-hover, .widget-button.btn-flat.downVote.no-text.btn-icon.d-hover{
+    svg{
+        color: var(--primary);
+    }
+}
+
+.voted{
+    color: var(--tertiary) !important;
 }
 
 nav.post-controls {
@@ -22,11 +35,11 @@ nav.post-controls {
 }
 
 vote-count {
-    color: var(--quaternary);
+    color: var(--tertiary);
     text-decoration: none;
     cursor: pointer;
     font-weight: bold;
     font-size: 20px;
-    padding: 10px 10px 10px 10px;  
-    border: 1px solid var(--quaternary);
+    padding: 4px 10px 4px 10px;  
+    border: 1px solid var(--tertiary);
 }

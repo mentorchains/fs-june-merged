@@ -10,6 +10,16 @@
 #the file which contains various methods for update and retrieving methods from the database
 
 
+class Counts
+	include ActiveModel::Serializers::JSON
+  
+	attr_accessor :upvotes, :downvotes
+  
+	def attributes
+	  {'upvotes' => nil, 'downvotes' => nil}
+	end
+end
+
 class ReplyVotingController < ::ApplicationController
 	
 	# # precondition: both incoming reply and user ids are valid
@@ -47,12 +57,31 @@ class ReplyVotingController < ::ApplicationController
 		render json: { vote: vote }
 	end
 
+	# precondition: coming reply id is valid
+	# postcondition: obtain a hash containing the upvotes and downvotes of a specific reply id
+	#
+	# @return --> a hash with counts for both upvotes and downvotes
+	def getVoteCounts
+		totalCounts = {
+			"upvotes" => VoteStore.get_up_count(params[:replyid]).to_i,
+			"downvotes" => VoteStore.get_down_count(params[:replyid]).to_i
+		}
+		return totalCounts
+	end
+
+		# totalCounts = Counts.new
+		# totalCounts.upvotes = VoteStore.get_up_count(params[:replyid]).to_i
+		# totalCounts.downvotes = VoteStore.get_down_count(params[:replyid]).to_i
+
+		# return totalCounts.to_json
 	# # @precondition: incoming reply id is valid
 	# # @postcondition: updates the database, removing a vote from the reply,
 	# #		  returns nothing
     def destroy
         Rails.logger.info 'Called VotesController#destroy'
-    
+  		# @vote = VoteStore.find(params[:replyid])
+		# @vote.destroy	
+		  
         Rails.logger.info "#{params}"
         VoteStore.remove_vote(params[:vote_id])
     
@@ -72,5 +101,24 @@ class ReplyVotingController < ::ApplicationController
 		render json: {count: (upcount-downcount)}
 	end
 
-	
+	# # precondition: both incoming reply, isupvote and user ids are valid
+	# # postcondition: get whether the user has upvote
+	# #		 returns true if user has upvote, false otherwise
+    def checkuserupvote
+		Rails.logger.info 'Called VotesController#checkUserVote'
+		vote_id = params[:vote_id]
+		votes = VoteStore.get_votes();
+		found = votes.find{|key,values| values[:reply_id] == params[:reply_id] \
+						&& values[:user_id] == params[:user_id] \
+						&& values[:upvote] == "true"}
+		isupvote = false
+		
+		if(found)
+			# Rails.logger.info "Found: #{found}"
+			isupvote = true
+		end
+
+		Rails.logger.info "isupvote: #{isupvote}"
+		render json: { upvote: isupvote }
+	end
 end

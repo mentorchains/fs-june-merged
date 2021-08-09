@@ -1,0 +1,8 @@
+en:
+  js:
+    replyvoting:
+      title: 'Notebook'
+
+      upvote_label: 'Upvote'
+
+      downvote_label: 'Downvote'

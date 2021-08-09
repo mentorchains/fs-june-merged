@@ -19,12 +19,12 @@
 
 .widget-button.btn-flat.upVote.no-text.btn-icon.d-hover, .widget-button.btn-flat.downVote.no-text.btn-icon.d-hover{
     svg{
-        color: var(--primary);
+        color: var(--tertiary);
     }
 }
 
 .voted{
-    color: var(--primary) !important;
+    color: var(--tertiary) !important;
 }
 
 nav.post-controls {
